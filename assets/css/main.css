@@ -1,0 +1,1016 @@
+/**
+ * The Handyman Furniture - main.css
+ * Brand: Mebel Kustom Yogyakarta (Make to Order)
+ * Based on Day Bootstrap Template, fully customized
+ */
+
+/*--------------------------------------------------------------
+# Font & Color Variables
+--------------------------------------------------------------*/
+:root {
+  --default-font: "Open Sans", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --heading-font: "Raleway", sans-serif;
+  --nav-font: "Poppins", sans-serif;
+}
+
+/* Brand Color Palette */
+:root {
+  --accent-color: #DD0426;          /* Candy Apple Red - CTA, hover, aktif */
+  --accent-dark: #b8001f;           /* Candy Apple Red darker (hover state) */
+  --background-color: #FFFFFF;      /* White - background utama */
+  --surface-color: #F9F9F9;         /* Surface Gray - card, box */
+  --border-color: #E5E5E5;          /* Border Gray - garis tepi */
+  --heading-color: #111111;         /* Text Dark - judul */
+  --default-color: #444444;         /* Teks body */
+  --contrast-color: #FFFFFF;        /* Teks di atas warna aksen */
+  --night-color: #121212;           /* Navbar, Footer */
+}
+
+/* Nav Colors */
+:root {
+  --nav-color: #FFFFFF;
+  --nav-hover-color: #DD0426;
+  --nav-mobile-background-color: #1a1a1a;
+  --nav-dropdown-background-color: #1a1a1a;
+  --nav-dropdown-color: #FFFFFF;
+  --nav-dropdown-hover-color: #DD0426;
+}
+
+/* Light Background Preset (untuk section bergantian) */
+.light-background {
+  --background-color: #F9F9F9;
+  --surface-color: #FFFFFF;
+}
+
+/* Dark Background Preset */
+.dark-background {
+  --background-color: #0d0d0d;
+  --default-color: #FFFFFF;
+  --heading-color: #FFFFFF;
+  --surface-color: #1e1e1e;
+  --contrast-color: #FFFFFF;
+}
+
+/* Smooth Scroll */
+:root {
+  scroll-behavior: smooth;
+}
+
+/*--------------------------------------------------------------
+# General Styling
+--------------------------------------------------------------*/
+body {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  font-family: var(--default-font);
+  line-height: 1.7;
+}
+
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  color: var(--accent-dark);
+  text-decoration: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: var(--heading-color);
+  font-family: var(--heading-font);
+  line-height: 1.3;
+}
+
+img {
+  max-width: 100%;
+}
+
+section, .section {
+  color: var(--default-color);
+  background-color: var(--background-color);
+  padding: 70px 0;
+  scroll-margin-top: 100px;
+  overflow: clip;
+}
+
+@media (max-width: 1199px) {
+  section, .section {
+    scroll-margin-top: 66px;
+    padding: 50px 0;
+  }
+}
+
+/*--------------------------------------------------------------
+# Preloader & Scroll Top
+--------------------------------------------------------------*/
+#preloader, .scroll-top {
+  display: none !important;
+}
+
+/*--------------------------------------------------------------
+# Disable AOS animation delay on mobile
+--------------------------------------------------------------*/
+@media screen and (max-width: 768px) {
+  [data-aos-delay] {
+    transition-delay: 0 !important;
+  }
+}
+
+/*--------------------------------------------------------------
+# Section Titles
+--------------------------------------------------------------*/
+.section-title {
+  text-align: center;
+  padding: 30px 0;
+  margin-bottom: 20px;
+  position: relative;
+}
+
+.section-title h2 {
+  font-size: 32px;
+  font-weight: 800;
+  text-transform: uppercase;
+  margin-bottom: 15px;
+  color: var(--heading-color);
+  position: relative;
+  z-index: 2;
+}
+
+.section-title h2::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 4px;
+  background-color: var(--accent-color);
+  margin: 12px auto 0;
+  border-radius: 2px;
+}
+
+.section-title span {
+  position: absolute;
+  top: 4px;
+  color: color-mix(in srgb, var(--heading-color), transparent 94%);
+  left: 0;
+  right: 0;
+  z-index: 1;
+  font-weight: 800;
+  font-size: 54px;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 2px;
+}
+
+.section-title p {
+  margin-bottom: 0;
+  position: relative;
+  z-index: 2;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  font-size: 15px;
+}
+
+@media (max-width: 575px) {
+  .section-title h2 { font-size: 26px; }
+  .section-title span { font-size: 36px; }
+}
+
+/*--------------------------------------------------------------
+# HEADER / NAVBAR
+--------------------------------------------------------------*/
+.header {
+  background-color: var(--night-color);
+  color: #FFFFFF;
+  transition: all 0.4s;
+  z-index: 997;
+}
+
+.header .branding {
+  min-height: 70px;
+  background-color: var(--night-color);
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.header .logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.header .logo img {
+  max-height: 40px;
+  width: auto;
+}
+
+.header .logo .sitename {
+  font-family: var(--heading-font);
+  font-size: 20px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin: 0;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+@media (min-width: 1200px) {
+  .navmenu ul {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 2px;
+  }
+
+  .navmenu li {
+    position: relative;
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    color: var(--nav-color);
+    padding: 22px 16px;
+    font-size: 15px;
+    font-family: var(--nav-font);
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    transition: 0.3s;
+    position: relative;
+  }
+
+  .navmenu a::after {
+    content: "";
+    position: absolute;
+    bottom: 14px;
+    left: 16px;
+    right: 16px;
+    height: 2px;
+    background-color: var(--accent-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .navmenu li:hover > a::after,
+  .navmenu .active::after {
+    transform: scaleX(1);
+  }
+
+  .navmenu li:hover > a,
+  .navmenu .active,
+  .navmenu .active:focus {
+    color: var(--accent-color);
+  }
+}
+
+@media (max-width: 1199px) {
+  .mobile-nav-toggle {
+    color: #FFFFFF;
+    font-size: 28px;
+    line-height: 0;
+    margin-right: 10px;
+    cursor: pointer;
+    transition: color 0.3s;
+  }
+
+  .navmenu ul {
+    display: none;
+    list-style: none;
+    position: absolute;
+    inset: 70px 20px 20px 20px;
+    padding: 10px 0;
+    margin: 0;
+    border-radius: 8px;
+    background-color: var(--nav-mobile-background-color);
+    overflow-y: auto;
+    z-index: 9998;
+    box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+    border: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .navmenu a,
+  .navmenu a:focus {
+    color: var(--nav-dropdown-color);
+    padding: 14px 24px;
+    font-family: var(--nav-font);
+    font-size: 16px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .navmenu a:last-child {
+    border-bottom: none;
+  }
+
+  .navmenu a:hover,
+  .navmenu .active,
+  .navmenu .active:focus {
+    color: var(--accent-color);
+    background: rgba(221, 4, 38, 0.08);
+  }
+
+  .mobile-nav-active {
+    overflow: hidden;
+  }
+
+  .mobile-nav-active .mobile-nav-toggle {
+    color: #fff;
+    position: absolute;
+    font-size: 32px;
+    top: 18px;
+    right: 15px;
+    z-index: 9999;
+  }
+
+  .mobile-nav-active .navmenu {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+  }
+
+  .mobile-nav-active .navmenu > ul {
+    display: block;
+  }
+}
+
+/*--------------------------------------------------------------
+# HERO SECTION
+--------------------------------------------------------------*/
+.hero {
+  width: 100%;
+  min-height: 100vh;
+  position: relative;
+  padding: 160px 0 100px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.hero img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.hero::before {
+  content: "";
+  background: linear-gradient(
+    135deg,
+    rgba(0,0,0,0.75) 0%,
+    rgba(18,18,18,0.6) 60%,
+    rgba(0,0,0,0.3) 100%
+  );
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+}
+
+.hero .container {
+  position: relative;
+  z-index: 3;
+}
+
+.hero h2 {
+  font-size: 52px;
+  font-weight: 800;
+  color: #FFFFFF;
+  line-height: 1.15;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 17px;
+  color: rgba(255,255,255,0.88);
+  line-height: 1.8;
+  margin-bottom: 36px;
+  max-width: 600px;
+}
+
+.btn-cta-hero {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--accent-color);
+  color: #FFFFFF !important;
+  font-family: var(--nav-font);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 32px;
+  border-radius: 4px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(221, 4, 38, 0.4);
+}
+
+.btn-cta-hero:hover {
+  background-color: var(--accent-dark);
+  transform: translateY(-2px);
+  color: #FFFFFF !important;
+}
+
+/*--------------------------------------------------------------
+# TENTANG KAMI & STRUKTUR ORGANISASI
+--------------------------------------------------------------*/
+.about .about-desc {
+  color: var(--default-color);
+  font-size: 15.5px;
+  margin-bottom: 28px;
+  line-height: 1.8;
+}
+
+.about h3 {
+  font-size: 26px;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 16px;
+}
+
+.about-img-wrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+}
+
+.about-img-wrapper img {
+  width: 100%;
+  border-radius: 8px;
+  object-fit: cover;
+  max-height: 460px;
+}
+
+.about-badge {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background-color: var(--accent-color);
+  color: #FFFFFF;
+  padding: 10px 18px;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--nav-font);
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(221, 4, 38, 0.4);
+}
+
+.about-features {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.about-features li {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+}
+
+.feature-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.feature-icon i {
+  font-size: 22px;
+  color: var(--accent-color);
+}
+
+.feature-text h5 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 4px;
+  color: var(--heading-color);
+}
+
+.feature-text p {
+  font-size: 14px;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  margin: 0;
+  line-height: 1.65;
+}
+
+/* BAGAN STRUKTUR ORGANISASI (ULTIMATE TIGHT & PERFECT) */
+.org-chart {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  padding: 20px 0;
+  width: 100%;
+}
+
+.org-level {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px; /* Jarak antar level atas diperkecil agar lebih naik */
+}
+
+.org-level:last-child {
+  margin-bottom: 0;
+}
+
+/* 1. Garis vertikal dari Fajar Retno ke Rizal */
+.org-level:first-child:after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 15px;
+  background-color: var(--accent-color);
+}
+
+/* 2. Garis vertikal dari Rizal turun ke bawah */
+.org-level:nth-child(2):after {
+  content: '';
+  position: absolute;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 15px;
+  background-color: var(--accent-color);
+}
+
+/* 3. Level baris bawah (4 card) */
+.org-level.has-branches {
+  position: relative;
+  padding-top: 15px; /* Dinaikkan agar card lebih dekat ke garis */
+}
+
+.org-level.has-branches .row {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 860px;
+  margin: 0 auto;
+  gap: 16px;
+}
+
+/* Garis Horizontal Penghubung Utama */
+.org-level.has-branches .row::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 105px;  /* Pas di tengah atas card Hani */
+  right: 110px; /* Pas di tengah atas card 25 Orang (dipangkas agar tidak kelebihan) */
+  height: 2px;
+  background-color: var(--accent-color);
+}
+
+/* 4. Garis Vertikal Kecil di Atas Masing-masing 4 Card */
+.org-level.has-branches .col-auto {
+  position: relative;
+  padding: 0;
+}
+
+.org-level.has-branches .col-auto:before {
+  content: '';
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 15px; /* Disesuaikan pendek agar tersambung pas */
+  background-color: var(--accent-color);
+}
+
+.org-card {
+  background: #ffffff;
+  border: 1px solid var(--border-color);
+  border-top: 4px solid var(--accent-color);
+  border-radius: 8px;
+  padding: 16px 20px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.04);
+  transition: transform 0.3s ease;
+  width: 185px;
+}
+
+.org-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+}
+
+.org-card h5 {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 4px;
+}
+
+.org-card span {
+  font-size: 12px;
+  color: #666;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.org-card i {
+  font-size: 22px;
+  color: var(--accent-color);
+  margin-bottom: 8px;
+  display: block;
+}
+
+@media (max-width: 992px) {
+  .org-level.has-branches .row::before,
+  .org-level.has-branches .col-auto:before {
+    display: none;
+  }
+}
+
+/*--------------------------------------------------------------
+# KATALOG PRODUK
+--------------------------------------------------------------*/
+.katalog-card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  transition: transform 0.3s ease;
+}
+
+.katalog-card:hover {
+  transform: translateY(-5px);
+}
+
+.katalog-card .katalog-img {
+  width: 100%;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.katalog-card .katalog-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.katalog-body {
+  padding: 20px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #ffffff;
+}
+
+.katalog-body h5 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: #222;
+}
+
+.katalog-body p {
+  font-size: 0.9rem;
+  color: #666;
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+# ALUR PEMESANAN
+--------------------------------------------------------------*/
+.step-card {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 32px 28px;
+  height: 100%;
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.step-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background-color: var(--accent-color);
+  transform: scaleY(0);
+  transform-origin: bottom;
+  transition: transform 0.3s ease;
+}
+
+.step-card:hover::before {
+  transform: scaleY(1);
+}
+
+.step-card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+  transform: translateY(-3px);
+}
+
+.step-number {
+  font-family: var(--heading-font);
+  font-size: 48px;
+  font-weight: 800;
+  color: color-mix(in srgb, var(--accent-color), transparent 85%);
+  line-height: 1;
+  margin-bottom: 10px;
+}
+
+.step-icon {
+  width: 50px;
+  height: 50px;
+  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+  transition: background-color 0.3s;
+}
+
+.step-card:hover .step-icon {
+  background-color: var(--accent-color);
+}
+
+.step-icon i {
+  font-size: 22px;
+  color: var(--accent-color);
+  transition: color 0.3s;
+}
+
+.step-card:hover .step-icon i {
+  color: #FFFFFF;
+}
+
+.step-card h5 {
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 10px;
+}
+
+.step-card p {
+  font-size: 14px;
+  color: color-mix(in srgb, var(--default-color), transparent 20%);
+  margin: 0;
+  line-height: 1.65;
+}
+
+.cta-box {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-left: 5px solid var(--accent-color);
+  border-radius: 8px;
+  padding: 36px 40px;
+  margin-top: 20px;
+}
+
+.cta-box h4 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 10px;
+}
+
+.cta-box p {
+  font-size: 15px;
+  color: color-mix(in srgb, var(--default-color), transparent 15%);
+  margin: 0;
+}
+
+.btn-cta-wa {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--accent-color);
+  color: #FFFFFF !important;
+  font-family: var(--nav-font);
+  font-weight: 600;
+  font-size: 15px;
+  padding: 14px 28px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 16px rgba(221, 4, 38, 0.3);
+}
+
+.btn-cta-wa:hover {
+  background-color: var(--accent-dark);
+  transform: translateY(-2px);
+  color: #FFFFFF !important;
+}
+
+/*--------------------------------------------------------------
+# KONTAK
+--------------------------------------------------------------*/
+.contact-info-card {
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 30px 24px;
+  height: 100%;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.contact-info-card:hover {
+  box-shadow: 0 6px 24px rgba(0,0,0,0.09);
+  transform: translateY(-3px);
+}
+
+.contact-icon {
+  width: 60px;
+  height: 60px;
+  background-color: color-mix(in srgb, var(--accent-color), transparent 90%);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 16px;
+  border: 2px dotted color-mix(in srgb, var(--accent-color), transparent 50%);
+  transition: all 0.3s;
+}
+
+.contact-info-card:hover .contact-icon {
+  background-color: var(--accent-color);
+  border-color: var(--accent-color);
+}
+
+.contact-icon i {
+  font-size: 24px;
+  color: var(--accent-color);
+  transition: color 0.3s;
+}
+
+.contact-info-card:hover .contact-icon i {
+  color: #FFFFFF;
+}
+
+.contact-info-card h5 {
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  color: var(--heading-color);
+}
+
+.contact-info-card p {
+  font-size: 15px;
+  color: color-mix(in srgb, var(--default-color), transparent 15%);
+  margin-bottom: 14px;
+}
+
+.contact-link {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent-color) !important;
+}
+
+.contact-link:hover {
+  color: var(--accent-dark) !important;
+  text-decoration: underline;
+}
+
+.maps-wrapper {
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/*--------------------------------------------------------------
+# FOOTER
+--------------------------------------------------------------*/
+.footer {
+  background-color: var(--night-color);
+  color: rgba(255,255,255,0.75);
+  font-size: 14px;
+  padding-bottom: 0;
+}
+
+.footer .footer-top {
+  padding: 60px 0 50px;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer-logo {
+  display: inline-block;
+  font-family: var(--heading-font);
+  font-size: 22px;
+  font-weight: 800;
+  color: #FFFFFF !important;
+  margin-bottom: 14px;
+}
+
+.footer-brand p {
+  font-size: 14px;
+  line-height: 1.75;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 20px;
+}
+
+.footer-contact-info p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.7);
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.footer-contact-info i {
+  color: var(--accent-color);
+  font-size: 15px;
+  flex-shrink: 0;
+}
+
+.footer-links h4 {
+  font-size: 16px;
+  font-weight: 700;
+  color: #FFFFFF;
+  margin-bottom: 16px;
+  position: relative;
+  padding-bottom: 10px;
+}
+
+.footer-links h4::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 30px;
+  height: 2px;
+  background-color: var(--accent-color);
+}
+
+.footer-links ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.footer-links ul li {
+  padding: 7px 0;
+  display: flex;
+  align-items: center;
+}
+
+.footer-links ul a {
+  color: rgba(255,255,255,0.65);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: color 0.3s, padding-left 0.3s;
+  font-size: 14px;
+}
+
+.footer-links ul a i {
+  font-size: 11px;
+  color: var(--accent-color);
+}
+
+.footer-links ul a:hover {
+  color: var(--accent-color);
+  padding-left: 4px;
+}
+
+.footer .copyright {
+  padding: 24px 0;
+  border-top: 1px solid rgba(255,255,255,0.08);
+}
+
+.footer .copyright p {
+  margin: 0;
+  font-size: 14px;
+  color: rgba(255,255,255,0.5);
+}
+
+.footer .copyright strong {
+  color: rgba(255,255,255,0.8);
+}
