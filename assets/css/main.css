@@ -424,6 +424,7 @@ section, .section {
   font-size: 15.5px;
   margin-bottom: 28px;
   line-height: 1.8;
+  text-align: justify;
 }
 
 .about h3 {
@@ -435,15 +436,16 @@ section, .section {
 
 .about-img-wrapper {
   position: relative;
-  display: inline-block;
+  display: block;
   width: 100%;
+  height: 100%;
 }
 
 .about-img-wrapper img {
   width: 100%;
+  height: 100%;
   border-radius: 8px;
   object-fit: cover;
-  max-height: 460px;
 }
 
 .about-badge {
@@ -506,15 +508,22 @@ section, .section {
   color: color-mix(in srgb, var(--default-color), transparent 20%);
   margin: 0;
   line-height: 1.65;
+  text-align: justify;
 }
 
-/* BAGAN STRUKTUR ORGANISASI (ULTIMATE TIGHT & PERFECT) */
+@media (max-width: 991px) {
+  .about-img-wrapper {
+    height: 360px;
+  }
+}
+
+/* BAGAN STRUKTUR ORGANISASI (VERTIKAL RAPAT & MENYATU) */
 .org-chart {
   display: flex;
   flex-direction: column;
   align-items: center;
   position: relative;
-  padding: 20px 0;
+  padding: 10px 0;
   width: 100%;
 }
 
@@ -523,41 +532,29 @@ section, .section {
   justify-content: center;
   position: relative;
   width: 100%;
-  margin-bottom: 15px; /* Jarak antar level atas diperkecil agar lebih naik */
+  margin-bottom: 16px; /* Jarak vertikal antar level diperkecil agar rapat */
 }
 
 .org-level:last-child {
   margin-bottom: 0;
 }
 
-/* 1. Garis vertikal dari Fajar Retno ke Rizal */
-.org-level:first-child:after {
+/* Garis vertikal penghubung antar level atas (diperpendek jadi 16px) */
+.org-level:not(:last-child):after {
   content: '';
   position: absolute;
-  bottom: -15px;
+  bottom: -16px;
   left: 50%;
-  transform: translateX(-50%);
   width: 2px;
-  height: 15px;
+  height: 16px;
   background-color: var(--accent-color);
+  transform: translateX(-50%);
+  z-index: 1;
 }
 
-/* 2. Garis vertikal dari Rizal turun ke bawah */
-.org-level:nth-child(2):after {
-  content: '';
-  position: absolute;
-  bottom: -15px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 2px;
-  height: 15px;
-  background-color: var(--accent-color);
-}
-
-/* 3. Level baris bawah (4 card) */
 .org-level.has-branches {
   position: relative;
-  padding-top: 15px; /* Dinaikkan agar card lebih dekat ke garis */
+  padding-top: 16px; /* Ruang rapat untuk garis horizontal utama */
 }
 
 .org-level.has-branches .row {
@@ -568,35 +565,40 @@ section, .section {
   width: 100%;
   max-width: 860px;
   margin: 0 auto;
-  gap: 16px;
 }
 
-/* Garis Horizontal Penghubung Utama */
+/* Garis Horizontal Utama */
 .org-level.has-branches .row::before {
   content: '';
   position: absolute;
   top: 0;
-  left: 105px;  /* Pas di tengah atas card Hani */
-  right: 110px; /* Pas di tengah atas card 25 Orang (dipangkas agar tidak kelebihan) */
+  left: 12.5%;
+  right: 12.5%;
   height: 2px;
   background-color: var(--accent-color);
+  z-index: 1;
 }
 
-/* 4. Garis Vertikal Kecil di Atas Masing-masing 4 Card */
+/* Garis Vertikal Pendek dari Garis Horizontal ke Masing-Masing Card Bawah (Diperpendek jadi 16px) */
 .org-level.has-branches .col-auto {
   position: relative;
-  padding: 0;
+  padding-top: 16px;
+  flex: 0 0 25%;
+  max-width: 25%;
+  display: flex;
+  justify-content: center;
 }
 
-.org-level.has-branches .col-auto:before {
+.org-level.has-branches .col-auto::before {
   content: '';
   position: absolute;
-  top: -15px;
+  top: 0;
   left: 50%;
-  transform: translateX(-50%);
   width: 2px;
-  height: 15px; /* Disesuaikan pendek agar tersambung pas */
+  height: 16px;
   background-color: var(--accent-color);
+  transform: translateX(-50%);
+  z-index: 2;
 }
 
 .org-card {
@@ -639,9 +641,14 @@ section, .section {
 }
 
 @media (max-width: 992px) {
+  .org-level:not(:last-child):after,
   .org-level.has-branches .row::before,
-  .org-level.has-branches .col-auto:before {
+  .org-level.has-branches .col-auto::before {
     display: none;
+  }
+  .org-level.has-branches .col-auto {
+    flex: 0 0 100%;
+    max-width: 100%;
   }
 }
 
